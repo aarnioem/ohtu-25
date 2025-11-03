@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 class PlayerReaderStub:
@@ -41,7 +41,7 @@ class TestStatisticsService(unittest.TestCase):
         self.assertCountEqual(self.stats.team("EDM"), edmonton)
 
     def test_top_points(self):
-        top_list = [
+        top_point_list = [
             Player("Gretzky", "EDM", 35, 89),
             Player("Coffey",  "PIT", 30, 83),
             Player("Lemieux", "PIT", 45, 54),
@@ -49,4 +49,27 @@ class TestStatisticsService(unittest.TestCase):
             Player("Kurri",   "EDM", 37, 53)
         ]
 
-        self.assertEqual(self.stats.top(4), top_list)
+        self.assertEqual(self.stats.top(4), top_point_list)
+        self.assertEqual(self.stats.top(4, SortBy.POINTS), top_point_list)
+
+    def test_top_goals(self):
+        top_goal_list = [
+            Player("Lemieux", "PIT", 45, 54),
+            Player("Yzerman", "DET", 42, 56),
+            Player("Kurri",   "EDM", 37, 53),
+            Player("Gretzky", "EDM", 35, 89),
+            Player("Coffey",  "PIT", 30, 83)
+        ]
+
+        self.assertEqual(self.stats.top(4, SortBy.GOALS), top_goal_list)
+
+    def test_top_assists(self):
+        top_assist_list = [
+            Player("Gretzky", "EDM", 35, 89),
+            Player("Coffey",  "PIT", 30, 83),
+            Player("Gilmour", "CGY", 26, 59),
+            Player("Yzerman", "DET", 42, 56),
+            Player("Lemieux", "PIT", 45, 54)
+        ]
+
+        self.assertEqual(self.stats.top(4, SortBy.ASSISTS), top_assist_list)
