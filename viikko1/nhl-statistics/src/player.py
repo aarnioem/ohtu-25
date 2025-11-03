@@ -5,6 +5,18 @@ class Player:
         self.goals = goals
         self.assists = assists
 
+    def __eq__(self, other):
+        if not isinstance(other, Player):
+            return False
+
+        if (
+            self.name == other.name and
+            self.team == other.team and
+            self.goals == other.goals and
+            self.assists == other.assists
+            ):
+            return True
+
     @property
     def points(self):
         return self.goals + self.assists
