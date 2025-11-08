@@ -13,8 +13,14 @@ def main():
 
     print("Players from FIN:")
 
+    finns = []
+
     for player in players:
         if player.nationality == "FIN":
-            print(player)
+            finns.append(player)
+    
+    sorted_finns = sorted(finns, key=lambda player: (player.points, player.goals), reverse=True)
+    for player in sorted_finns:
+        print(player)
 
 main()
