@@ -1,6 +1,6 @@
 # ohtu-25
 
-## ohtu palautukset
+## ohtuvarasto
 https://github.com/aarnioem/ohtuvarasto
 
 ## webcounter repo
