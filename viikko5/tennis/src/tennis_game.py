@@ -36,16 +36,12 @@ class TennisGame:
 
     def get_endgame_score(self):
         score_difference = self.score_player1 - self.score_player2
+        leader = self.player1 if score_difference > 0 else self.player2
 
-        if score_difference == 1:
-            score = "Advantage player1"
-        elif score_difference == -1:
-            score = "Advantage player2"
-        elif score_difference >= 2:
-            score = "Win for player1"
-        else:
-            score = "Win for player2"
-        return score
+        if abs(score_difference) == 1:
+            return f"Advantage {leader}"
+        elif abs(score_difference) >= 2:
+            return f"Win for {leader}"
 
     def get_normal_scores(self):
         score_names = {
