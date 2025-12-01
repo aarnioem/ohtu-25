@@ -24,15 +24,15 @@ class TennisGame:
         return score
 
     def get_even_score(self):
-        if self.score_player1 == 0 and self.score_player2 == 0:
-            score = "Love-All"
-        elif self.score_player1 == 1 and self.score_player2 == 1:
-            score = "Fifteen-All"
-        elif self.score_player1 == 2 and self.score_player2 == 2:
-            score = "Thirty-All"
+        score_names = {
+            0: "Love-All",
+            1: "Fifteen-All",
+            2: "Thirty-All"
+        }
+        if self.score_player1 in score_names:
+            return score_names[self.score_player1]
         else:
-            score = "Deuce"
-        return score
+            return "Deuce"
 
     def get_endgame_score(self):
         score_difference = self.score_player1 - self.score_player2
