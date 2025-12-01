@@ -49,11 +49,11 @@ class TennisGame:
         return score
 
     def check_even_score(self):
-        if self.score_player1 == 0:
+        if self.score_player1 == 0 and self.score_player2 == 0:
             score = "Love-All"
-        elif self.score_player1 == 1:
+        elif self.score_player1 == 1 and self.score_player2 == 1:
             score = "Fifteen-All"
-        elif self.score_player1 == 2:
+        elif self.score_player1 == 2 and self.score_player2 == 2:
             score = "Thirty-All"
         else:
             score = "Deuce"
