@@ -22,21 +22,7 @@ class TennisGame:
             score = self.get_endgame_score()
 
         else:
-            for i in range(1, 3):
-                if i == 1:
-                    temp_score = self.score_player1
-                else:
-                    score = score + "-"
-                    temp_score = self.score_player2
-
-                if temp_score == 0:
-                    score = score + "Love"
-                elif temp_score == 1:
-                    score = score + "Fifteen"
-                elif temp_score == 2:
-                    score = score + "Thirty"
-                elif temp_score == 3:
-                    score = score + "Forty"
+            score = self.get_normal_scores()
 
         return score
 
@@ -52,7 +38,7 @@ class TennisGame:
         return score
 
     def get_endgame_score(self):
-        score_difference = self.score_player1 - self. score_player2
+        score_difference = self.score_player1 - self.score_player2
 
         if score_difference == 1:
             score = "Advantage player1"
@@ -63,3 +49,15 @@ class TennisGame:
         else:
             score = "Win for player2"
         return score
+
+    def get_normal_scores(self):
+        score_names = {
+            0: "Love",
+            1: "Fifteen",
+            2: "Thirty",
+            3: "Forty"
+        }
+
+        score_name1 = score_names[self.score_player1]
+        score_name2 = score_names[self.score_player2]
+        return f"{score_name1}-{score_name2}"
